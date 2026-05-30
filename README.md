@@ -48,6 +48,13 @@ pip install -r requirements-runpod.txt
 bash run_rtx_pro_6000_hour.sh
 ```
 
+Если Kaggle не видит ключ, добавь `kaggle.json` в `~/.kaggle/kaggle.json` или задай:
+
+```bash
+export KAGGLE_USERNAME="your_username"
+export KAGGLE_KEY="your_key"
+```
+
 После обучения в `runs/casia_rtx_pro_6000_hour/` появятся:
 
 - `best_model.pt` - лучшая сохраненная модель;

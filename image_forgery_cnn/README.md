@@ -57,6 +57,23 @@ python -m venv .venv
 pip install -r requirements-runpod.txt
 ```
 
+Для скачивания Kaggle-датасета используется официальный `kaggle` CLI. `kagglehub` не требуется.
+
+На RunPod укажи Kaggle credentials одним из способов:
+
+```bash
+mkdir -p ~/.kaggle
+cp /path/to/kaggle.json ~/.kaggle/kaggle.json
+chmod 600 ~/.kaggle/kaggle.json
+```
+
+или:
+
+```bash
+export KAGGLE_USERNAME="your_username"
+export KAGGLE_KEY="your_key"
+```
+
 ## Основное обучение на RTX PRO 6000
 
 ```bash

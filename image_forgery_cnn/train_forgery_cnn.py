@@ -195,21 +195,33 @@ def resolve_dataset(data_dir: str | None, dataset_slug: str) -> Path:
             raise FileNotFoundError(f"Dataset directory does not exist: {root}")
         return root
 
+    kaggle_error: Exception | None = None
+    try:
+        return download_dataset_with_kaggle_cli(dataset_slug)
+    except Exception as exc:
+        kaggle_error = exc
+        print(f"kaggle CLI download failed, trying kagglehub fallback: {exc}")
+
     try:
         import kagglehub
         return Path(kagglehub.dataset_download(dataset_slug)).resolve()
     except Exception as exc:
-        print(f"kagglehub download failed, falling back to kaggle CLI: {exc}")
-
-    return download_dataset_with_kaggle_cli(dataset_slug)
+        raise RuntimeError(
+            "Could not download dataset automatically. Use one of these fixes:\n"
+            "1) Put kaggle.json into ~/.kaggle/kaggle.json and run again.\n"
+            "2) Export KAGGLE_USERNAME and KAGGLE_KEY, then run again.\n"
+            "3) Download the dataset manually and pass --data-dir /path/to/dataset.\n"
+            f"kaggle CLI error: {kaggle_error}\n"
+            f"kagglehub error: {exc}"
+        ) from exc
 
 
 def download_dataset_with_kaggle_cli(dataset_slug: str) -> Path:
     kaggle_bin = shutil.which("kaggle")
     if kaggle_bin is None:
         raise RuntimeError(
-            "Could not download dataset: kagglehub failed and kaggle CLI is not installed. "
-            "Run `pip install kaggle`, or download the dataset manually and pass --data-dir."
+            "kaggle CLI is not installed. Run `pip install kaggle`, or download the dataset "
+            "manually and pass --data-dir."
         )
 
     safe_name = dataset_slug.replace("/", "__")
