@@ -1,0 +1,19 @@
+{
+  "dataset_slug": "divg07/casia-20-image-tampering-detection-dataset",
+  "data_dir": null,
+  "output_dir": "/workspace/SAI-DB_lab1_sem4/image_forgery_cnn/runs/casia_rtx_pro_6000_hour",
+  "image_size": 384,
+  "epochs": 16,
+  "freeze_epochs": 2,
+  "batch_size": 96,
+  "max_per_class": 5000,
+  "learning_rate": 0.0003,
+  "fine_tune_lr_factor": 0.2,
+  "weight_decay": 0.0001,
+  "seed": 42,
+  "amp": true,
+  "pretrained": true,
+  "num_workers": 12,
+  "input_mode": "rgb",
+  "ela_quality": 90
+}

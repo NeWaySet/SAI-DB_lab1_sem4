@@ -11,6 +11,7 @@
 | `Самостоятельное_задание_1_отчет_CNN_фальсификация_изображений.docx` | готовый отчет для защиты |
 | `image_forgery_cnn/` | рабочий проект нейросети на PyTorch |
 | `image_forgery_cnn_runpod.zip` | архив с кодом для загрузки на RunPod |
+| `training_results/casia_rtx_pro_6000_hour/` | результаты обучения на CASIA 2.0 |
 | `.gitignore` | исключения для весов модели, датасетов и временных файлов |
 
 ## Кратко о решении
@@ -63,6 +64,25 @@ export KAGGLE_KEY="your_key"
 - `training_curves.png` - графики accuracy/loss;
 - `confusion_matrix.png` - матрица ошибок;
 - `test_metrics.json` - итоговые метрики.
+
+## Полученные результаты
+
+Обучение на RunPod с RTX PRO 6000 выполнено на 10000 изображениях CASIA 2.0. Итоговые метрики сохранены в `training_results/casia_rtx_pro_6000_hour/`.
+
+| Метрика | Значение |
+| --- | ---: |
+| Accuracy | `0.8447` |
+| Precision forged | `0.8327` |
+| Recall forged | `0.8627` |
+| F1 forged | `0.8474` |
+| ROC-AUC | `0.9225` |
+
+Матрица ошибок на test:
+
+|  | Pred original | Pred forged |
+| --- | ---: | ---: |
+| True original | `620` | `130` |
+| True forged | `103` | `647` |
 
 ## Проверка изображения
 
