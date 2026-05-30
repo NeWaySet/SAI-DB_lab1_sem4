@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+runs/
+*.pt
+*.pth
+*.onnx
+*.ckpt
+image_forgery_cnn/demo_data/
+rendered_*/
+render_*/
+report_assets/
+*.pdf
+*.png
+*.emf
+~$*.docx
