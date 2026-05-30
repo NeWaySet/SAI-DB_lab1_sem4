@@ -26,6 +26,29 @@ source .venv/bin/activate
 pip install -r requirements-runpod.txt
 ```
 
+Если `kagglehub` на RunPod падает из-за несовместимой версии `kagglesdk`, скрипт автоматически переключится на обычный `kaggle` CLI. Для этого должен быть доступ к Kaggle API.
+
+Можно задать токен так:
+
+```bash
+export KAGGLE_API_TOKEN="your_token"
+```
+
+Или сохранить токен в файл:
+
+```bash
+mkdir -p ~/.kaggle
+echo "your_token" > ~/.kaggle/access_token
+chmod 600 ~/.kaggle/access_token
+```
+
+Для старого формата `kaggle.json` также подходят переменные:
+
+```bash
+export KAGGLE_USERNAME="your_username"
+export KAGGLE_KEY="your_key"
+```
+
 На Windows:
 
 ```powershell

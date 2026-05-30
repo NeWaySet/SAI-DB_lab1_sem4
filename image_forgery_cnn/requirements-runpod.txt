@@ -1,6 +1,7 @@
 torch
 torchvision
 kagglehub
+kaggle
 numpy
 pandas
 scikit-learn
